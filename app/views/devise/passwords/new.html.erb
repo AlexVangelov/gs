@@ -1,0 +1,27 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <h2 class="md-title">GS &raquo; Forgot your password?</h2>
+  </div>
+</md-toolbar>
+<md-content flex layout-padding>
+  <form ng-submit="register('<%= password_path(resource_name) %>')">
+    <%= fields_for resource, as: resource_name do |f| %>
+    <%= devise_error_messages! %>
+
+    <div layout layout-sm="column">
+      <md-input-container>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <md-button class="md-raised md-primary" type="submit">
+        Send me reset password instructions
+      </md-button>
+    </div>
+    <% end %>
+  </form>
+  <div layout layout-sm="column">
+    <%= render "devise/shared/links" %>
+  </div>
+</md-content>

@@ -1,0 +1,42 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <h2 class="md-title">GS &raquo; Sign up</h2>
+  </div>
+</md-toolbar>
+<md-content flex layout-padding>
+  <form ng-submit="register('<%= registration_path(resource_name) %>')">
+    <%= fields_for resource, as: resource_name do |f| %>
+    <%= devise_error_messages! %>
+
+    <div layout layout-sm="column">
+      <md-input-container>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <md-input-container>
+        <%= f.label :password %>
+        <!-- <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br /> -->
+        <%= f.password_field :password, autocomplete: "off" %>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <md-input-container>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+      <md-button class="md-raised md-primary" type="submit">
+        Sign up
+      </md-button>
+    </div>
+    <% end %>
+  </form>
+  <div layout layout-sm="column">
+    <%= render "devise/shared/links" %>
+  </div>
+</md-content>
