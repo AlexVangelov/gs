@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   constraints OnlyHxr.new do
     devise_for :accounts
     resources :accounts
-    get 'main' => "application#main"
     get '/' => "application#main"
   end
   

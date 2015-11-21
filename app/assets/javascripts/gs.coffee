@@ -8,6 +8,13 @@ angular.module 'gs', [
   'ngMaterial',
   'gs.devise'
 ]
+.controller 'GsCtrl', ['$scope', '$http', '$state', '$templateCache', ($scope, $http, $state, $templateCache)->
+  $scope.logOut = (url)->
+    $http.delete(url).then (resp)->
+      $templateCache.removeAll()
+      $state.go 'gs.index', {},
+        reload: true
+]
 .config ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)->
   $urlRouterProvider.otherwise "/"
   
@@ -18,8 +25,9 @@ angular.module 'gs', [
   $stateProvider
   .state 'gs',
     abstract: true
-    template: "<ui-view></ui-view>"
+    template: "<ui-view></ui-view>",
+    controller: "GsCtrl"
   .state 'gs.index',
     url: '/',
-    templateUrl: 'main'
+    templateUrl: '/'
 ]
