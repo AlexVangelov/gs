@@ -8,10 +8,12 @@ angular.module 'gs', [
   'ngMaterial',
   'gs.devise'
 ]
-.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', ($stateProvider, $urlRouterProvider, $locationProvider) ->
+.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
   $urlRouterProvider.otherwise "/"
   
   $locationProvider.html5Mode true
+  
+  $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
   
   $stateProvider
   .state 'gs',

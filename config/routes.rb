@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :accounts
-  resources :accounts
+  class OnlyHxr
+    def matches?(request)
+      request.xhr?
+    end
+  end
   
-  get 'main' => "application#main"
+  constraints OnlyHxr.new do
+    devise_for :accounts
+    resources :accounts
+    get 'main' => "application#main"
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'application#index'
-  get '*path' => "application#index"
+  get '*path' => "application#index"   
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
