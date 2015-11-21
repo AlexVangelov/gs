@@ -45,5 +45,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'angular-material-rails', path: '../angular-material-rails'
 gem 'billing', path: '../billing'
 gem 'devise'
