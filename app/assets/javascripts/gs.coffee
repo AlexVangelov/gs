@@ -12,7 +12,7 @@ angular.module 'gs', [
   $scope.logOut = (url)->
     $http.delete(url).then (resp)->
       $templateCache.removeAll()
-      $state.go 'gs.index', {},
+      $state.go 'gs.devise.logIn', {},
         reload: true
 ]
 .config ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)->
