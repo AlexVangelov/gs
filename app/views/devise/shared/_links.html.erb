@@ -1,13 +1,13 @@
 <%- if controller_name != 'sessions' %>
-  <md-button ui-sref='gs.logIn'>Log in</md-button>
+  <md-button ui-sref='gs.devise.logIn'>Log in</md-button>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <md-button ui-sref='gs.signUp'>Sign up</md-button>
+  <md-button ui-sref='gs.devise.signUp'>Sign up</md-button>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <md-button ui-sref='gs.passwordRecovery'>Forgot your password?</md-button>
+  <md-button ui-sref='gs.devise.passwordRecovery'>Forgot your password?</md-button>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

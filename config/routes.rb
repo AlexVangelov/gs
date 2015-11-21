@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     devise_for :accounts
     resources :accounts
     get 'main' => "application#main"
+    get '/' => "application#main"
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

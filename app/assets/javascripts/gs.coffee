@@ -8,7 +8,7 @@ angular.module 'gs', [
   'ngMaterial',
   'gs.devise'
 ]
-.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
+.config ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider)->
   $urlRouterProvider.otherwise "/"
   
   $locationProvider.html5Mode true
