@@ -11,7 +11,7 @@
     <div layout layout-sm="column">
       <md-input-container>
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: true, 'ng-model' => 'account.email' %>
       </md-input-container>
     </div>
     <div layout layout-sm="column">
@@ -20,13 +20,13 @@
         <!-- <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br /> -->
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", 'ng-model' => 'account.password' %>
       </md-input-container>
     </div>
     <div layout layout-sm="column">
       <md-input-container>
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", 'ng-model' => 'account.password_confirmation' %>
       </md-input-container>
     </div>
     <div layout layout-sm="column">

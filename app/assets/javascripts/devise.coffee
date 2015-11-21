@@ -13,6 +13,9 @@ angular.module 'gs.devise', [
   $scope.authenticate = (url)->
     $http.post(url, account: $scope.account).then (resp)->
       $state.go 'gs.index'
+  $scope.register = (url)->
+    $http.post(url, account: $scope.account).then (resp)->
+      $state.go 'gs.index'
 ]
 .config ['$stateProvider', ($stateProvider)->
   $stateProvider
