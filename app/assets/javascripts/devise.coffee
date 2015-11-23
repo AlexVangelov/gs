@@ -7,12 +7,16 @@ angular.module 'gs.devise', [
       console.log error.data
       $state.go 'gs.devise.logIn' if error.status is 401
 ]
-.controller 'DeviseCtrl', ['$scope', '$http', '$state', ($scope, $http, $state)->
+.controller 'DeviseCtrl', ['$scope', '$http', '$state', '$flash', ($scope, $http, $state, $flash)->
   self = @
   $scope.account = {}
   $scope.authenticate = (url)->
-    $http.post(url, account: $scope.account).then (resp)->
+    $http.post(url, account: $scope.account)
+    .then (resp)->
       $state.go 'gs.index'
+    .catch (resp)->
+      $flash.alert = resp.data.error
+      $state.go 'gs.devise.logIn'
   $scope.register = (url)->
     $http.post(url, account: $scope.account).then (resp)->
       $state.go 'gs.index'

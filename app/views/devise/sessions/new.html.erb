@@ -3,6 +3,7 @@
     <h2 class="md-title">GS &raquo; Log in</h2>
   </div>
 </md-toolbar>
+<flash-messages></flash-messages>
 <md-content flex layout-padding>
   <form ng-submit="authenticate('<%= session_path(resource_name) %>')">
     <%= fields_for resource, as: resource_name do |f| %>

@@ -6,7 +6,8 @@ angular.module 'gs', [
   'ui.router', 
   'ngMessages', 
   'ngMaterial',
-  'gs.devise'
+  'gs.devise',
+  'gs.utils'
 ]
 .controller 'GsCtrl', ['$scope', '$http', '$state', '$templateCache', ($scope, $http, $state, $templateCache)->
   $scope.logOut = (url)->

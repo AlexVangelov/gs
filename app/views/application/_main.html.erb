@@ -1,10 +1,12 @@
 <md-toolbar class="md-info">
   <div class="md-toolbar-tools">
     <h2 class="md-flex">GS</h2>
+    <span flex></span>
+    <md-button class="md-raised md-warn" ng-click="logOut('<%= destroy_account_session_path %>')">
+      Logout
+    </md-button>
   </div>
 </md-toolbar>
 <md-content flex layout-padding>
-<md-button class="md-raised md-warn" ng-click="logOut('<%= destroy_account_session_path %>')">
-  Logout
-</md-button>
+  
 </md-content>
