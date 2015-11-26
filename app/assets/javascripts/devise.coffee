@@ -6,6 +6,8 @@ angular.module 'gs.devise', [
     if error.status is 401
       console.log error.data
       $state.go 'gs.devise.logIn' if error.status is 401
+    else
+      console.log error
 ]
 .controller 'DeviseCtrl', ['$scope', '$http', '$state', '$flash', ($scope, $http, $state, $flash)->
   self = @

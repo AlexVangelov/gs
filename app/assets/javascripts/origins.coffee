@@ -1,4 +1,13 @@
 angular.module 'gs.settings.origins', [
+  'ngResource'
+]
+.factory 'OriginStore', ['$resource', ($resource)->
+  console.log 'OriginStore'
+  $resource '/origins/:id', 
+    id: '@_id'
+  ,
+    update: 
+      method: 'PUT'
 ]
 .controller 'SettingsOriginsCtrl', ['$scope', '$mdDialog', 'origins', ($scope, $mdDialog, origins)->
   $scope.items = origins
@@ -8,10 +17,15 @@ angular.module 'gs.settings.origins', [
       templateUrl: 'origins/new.html'
       parent: angular.element(document.body)
       resolve:
-        origin: ['$http', ($http)->
-          $http.get 'origins/'+origin_id
-          .then (resp)->
-            resp.data
+        # origin: ['$http', ($http)->
+          # $http.get 'origins/'+origin_id
+          # .then (resp)->
+            # resp.data
+        # ]
+        origin: ['OriginStore', (OriginStore)->
+          console.log 'resolve'
+          OriginStore.get 
+            id: origin_id
         ]
     .then (answer)->
       $scope.status = 'You said the information was "' + answer + '".'

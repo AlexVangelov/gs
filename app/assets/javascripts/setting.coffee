@@ -20,10 +20,8 @@ angular.module 'gs.settings', [
     controller: 'SettingsOriginsCtrl as c'
     templateUrl: 'origins',
     resolve: {
-      origins: ['$http', ($http)->
-        $http.get 'origins'
-        .then (resp)->
-          resp.data
+      origins: ['OriginStore', (OriginStore)->
+        OriginStore.query()
       ]
     }
   .state 'gs.settings.resources',
