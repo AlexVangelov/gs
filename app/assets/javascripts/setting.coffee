@@ -8,6 +8,7 @@ angular.module 'gs.settings', [
     abstract: true
     url: '/settings'
     templateUrl: 'settings',
+    controller: 'Settings',
     resolve:
       settings: [ '$http', ($http)->
         $http.get('settings')
@@ -43,3 +44,11 @@ angular.module 'gs.settings', [
     url: '/plus'
     templateUrl: 'plus'
 ]  
+.controller 'Settings', ['$scope', '$state', ($scope, $state)->
+  console.log 'init'
+  $scope.isSetting = (setting)->
+    console.log setting
+    console.log $state.current
+    console.log $state.includes(setting)
+    $state.includes setting
+]

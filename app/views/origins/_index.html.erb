@@ -1,5 +1,20 @@
-<md-button class="md-fab md-primary add-item-btn" ng-click="edit('new')">NEW</md-button>
-<md-list>
-  <md-list-item ng-repeat-start="item in items" ng-click="edit(item.id)">{{item.name}}</md-list-item>
-  <md-divider ng-repeat-end></md-divider>
-</md-list>
+<md-card class="help-card">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Origins Tutorial</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    What is origin and how it works...
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center center">
+    <md-button class="md-fab md-raised help-close-btn" style="position: relative;bottom: -36px;">Close</md-button>
+  </md-card-actions>
+</md-card>
+<div layout-padding>
+  <md-button class="md-fab md-primary add-item-btn" ng-click="edit('new')">NEW</md-button>
+  <md-list>
+    <md-list-item ng-repeat-start="item in items" ng-click="edit(item.id)">{{item.name}}</md-list-item>
+    <md-divider ng-repeat-end></md-divider>
+  </md-list>
+</div>

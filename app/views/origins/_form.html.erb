@@ -9,14 +9,17 @@
     </md-toolbar>
     <md-dialog-content>
       <md-content layout-padding>
-        <md-input-container>
+        <md-input-container class="md-block">
           <label>Name</label>
           <input ng-model="item.name" md-autofocus>
         </md-input-container>
       </md-content>
     </md-dialog-content>
-    <md-dialog-actions layout="row">
-      <span flex></span>
+    <md-dialog-actions layout="row" style="padding-left: 0;">
+      <md-button ng-if='item.id' class="md-raised md-warn" ng-click="delete()">
+        Delete
+      </md-button>
+      <span flex><div hide-sm style="width: 250px;">&nbsp;</div></span>
       <md-button class="md-raised" ng-click="cancel()">
         Cancel
       </md-button>

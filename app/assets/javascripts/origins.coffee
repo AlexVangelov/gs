@@ -2,7 +2,6 @@ angular.module 'gs.settings.origins', [
   'ngResource'
 ]
 .factory 'OriginStore', ['$resource', ($resource)->
-  console.log 'OriginStore'
   $resource '/origins/:id', 
     id: '@_id'
   ,
@@ -17,13 +16,7 @@ angular.module 'gs.settings.origins', [
       templateUrl: 'origins/new.html'
       parent: angular.element(document.body)
       resolve:
-        # origin: ['$http', ($http)->
-          # $http.get 'origins/'+origin_id
-          # .then (resp)->
-            # resp.data
-        # ]
         origin: ['OriginStore', (OriginStore)->
-          console.log 'resolve'
           OriginStore.get 
             id: origin_id
         ]
@@ -33,20 +26,24 @@ angular.module 'gs.settings.origins', [
       $scope.status = 'You cancelled the dialog.'
 ]
 OriginController = ['$scope', '$mdDialog', '$http', 'origin', ($scope, $mdDialog, $http, origin)->
-  console.log origin
   $scope.item = origin
   $scope.hide = ()->
     $mdDialog.hide()
   $scope.cancel = ()->
     $mdDialog.cancel()
   $scope.save = ()->
-    console.log 'Save'
+    # console.log 'Save'
     if $scope.item.id
-      operation = $http.put 'origins/'+$scope.item.id, $scope.item
+      operation = $scope.item.$update $scope.item
     else
-      operation = $http.post 'origins', $scope.item
+      operation = $scope.item.$save()
     operation.then ()->
       $mdDialog.hide('OK')
     .catch (resp)->
       console.error resp
+  $scope.delete = ()->
+    $scope.item.$delete
+      id: $scope.item.id
+    .then ()->
+      $mdDialog.hide('OK')
 ]
