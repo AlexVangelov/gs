@@ -1,0 +1,46 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">GS &raquo; Settings</h2>
+    <md-button ui-sref="gs.index">
+      Home
+    </md-button>
+    <span flex></span>
+    <md-button md-no-ink ng-click="logOut('<%= destroy_account_session_path %>')">
+      Logout
+    </md-button>
+  </div>
+</md-toolbar>
+<md-content id='settings' layout="row" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-list>
+      <md-list-item ui-sref="gs.settings.system">
+        System
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.origins">
+        Origins
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.resources">
+        Resources
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.paymentTypes">
+        Payment Types
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.operators">
+        Operators
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.taxGroups">
+        Tax Groups
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.departments">
+        Price-Lookup Groups
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.plus">
+        Price-Lookup Items
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <md-content flex layout-padding>
+    <ui-view layout="column" flex layout-fill>
+    </ui-view>
+  </md-content>
+</md-content>

@@ -1,0 +1,28 @@
+<md-dialog aria-label="origin" ng-cloak>
+  <form name='originForm' ng-submit="save()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Origin &raquo; {{item.id ? item.name : 'new'}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">&times;</md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <md-content layout-padding>
+        <md-input-container>
+          <label>Name</label>
+          <input ng-model="item.name" md-autofocus>
+        </md-input-container>
+      </md-content>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised" ng-click="cancel()">
+        Cancel
+      </md-button>
+      <md-button class="md-raised md-primary" type="submit">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

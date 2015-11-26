@@ -17,3 +17,4 @@
 /tmp
 .project
 Gemfile.lock
+.tern-project

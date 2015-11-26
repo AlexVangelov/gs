@@ -1,13 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 angular.module 'gs', [
   'ui.router', 
   'ngMessages', 
   'ngMaterial',
   'gs.devise',
-  'gs.utils'
+  'gs.utils',
+  'gs.settings'
 ]
 .controller 'GsCtrl', ['$scope', '$http', '$state', '$templateCache', ($scope, $http, $state, $templateCache)->
   $scope.logOut = (url)->
@@ -26,7 +23,7 @@ angular.module 'gs', [
   $stateProvider
   .state 'gs',
     abstract: true
-    template: "<ui-view></ui-view>",
+    template: '<ui-view layout="column" flex></ui-view>',
     controller: "GsCtrl"
   .state 'gs.index',
     url: '/',
