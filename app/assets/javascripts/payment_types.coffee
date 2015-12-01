@@ -9,6 +9,6 @@ angular.module 'gs.settings.paymentTypes', [
     update: 
       method: 'PUT'
 ]
-.controller 'SettingsPaymentTypesCtrl', ['$scope', 'payment_types', ($scope, payment_types)->
-  $scope.payment_types = payment_types
+.controller 'SettingsPaymentTypesCtrl', ['$scope', 'paymentTypes', ($scope, paymentTypes)->
+  $scope.paymentTypes = paymentTypes
 ]

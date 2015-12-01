@@ -1,1 +1,16 @@
-Payment Types
+<help-card key='settings.payment_types'></help-card>
+<div class="inset">
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/payment_type', 'new', paymentTypes)">NEW</md-button>
+  <div layout="row">
+    <md-input-container flex>
+      <label>Payment Types Search</label>
+      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+    </md-input-container>
+  </div>
+  <md-list style="padding-top: 2px;">
+    <md-list-item ng-repeat-start="paymentType in paymentTypes" ng-click="resourceDialog('settings/payment_type', paymentType.id, paymentTypes)">
+      {{paymentType.name}}
+    </md-list-item>
+    <md-divider ng-repeat-end></md-divider>
+  </md-list>
+</div>

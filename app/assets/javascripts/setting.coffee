@@ -50,7 +50,7 @@ angular.module 'gs.settings', [
     templateUrl: 'settings/payment_types'
     controller: 'SettingsPaymentTypesCtrl'
     resolve: 
-      payment_types: ['PaymentTypeStore', (PaymentTypeStore)->
+      paymentTypes: ['PaymentTypeStore', (PaymentTypeStore)->
         PaymentTypeStore.query().$promise
       ]
   .state 'gs.settings.taxGroups',
