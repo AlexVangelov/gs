@@ -1,42 +1,77 @@
 angular.module 'gs.settings', [
   'ui.router',
-  'gs.settings.origins'
+  'ngMaterial'
+  'gs.settings.origins',
+  'gs.settings.operators',
+  'gs.settings.resources',
+  'gs.settings.paymentTypes'
+]
+.factory 'SettingsStore', ['$store', '$rootScope', ($store, $rootScope)->
+  $store '/api/:uuid/config',
+    uuid: $rootScope.gsUuid
 ]
 .config ['$stateProvider', ($stateProvider)->
   $stateProvider
   .state 'gs.settings',
     abstract: true
-    url: '/settings'
+    url: '/settings/:uuid'
     templateUrl: 'settings',
     controller: 'Settings',
     resolve:
-      settings: [ '$http', ($http)->
-        $http.get('settings')
+      gsUuid: ['$stateParams', '$rootScope', ($stateParams, $rootScope)->
+        $rootScope.gsUuid = $stateParams.uuid
       ]
+      settings: [ 'SettingsStore', (SettingsStore)->
+        SettingsStore.get().$promise
+      ]
+    params:
+      uuid: undefined
   .state 'gs.settings.system',
     url: '/system'
-    templateUrl: 'account'
+    templateUrl: 'settings/system'
+  .state 'gs.settings.operators',
+    url: '/operators'
+    controller: 'SettingsOperatorsCtrl as c'
+    templateUrl: 'settings/operators'
+    resolve:
+      operators: ['OperatorStore', (OperatorStore)->
+        OperatorStore.query().$promise
+      ]
   .state 'gs.settings.origins',
     url: '/origins'
     controller: 'SettingsOriginsCtrl as c'
-    templateUrl: 'origins',
-    resolve: {
+    templateUrl: 'settings/origins',
+    resolve:
       origins: ['OriginStore', (OriginStore)->
-        OriginStore.query()
+        OriginStore.query().$promise
+      ]
+  .state 'gs.settings.paymentTypes',
+    url: '/payment_types'
+    templateUrl: 'settings/payment_types'
+    controller: 'SettingsPaymentTypesCtrl'
+    resolve: 
+      payment_types: ['PaymentTypeStore', (PaymentTypeStore)->
+        PaymentTypeStore.query().$promise
+      ]
+  .state 'gs.settings.taxGroups',
+    url: '/tax_groups'
+    templateUrl: 'tax_groups'
+  .state 'gs.settings.resourceTypes',
+    url: '/resource_types'
+    templateUrl: 'resourceTypes',
+    resolve: {
+      resources: ['ResourceTypeStore', (ResourceStore)->
+        ResourceTypeStore.query().$promise
       ]
     }
   .state 'gs.settings.resources',
     url: '/resources'
-    templateUrl: 'resources'
-  .state 'gs.settings.paymentTypes',
-    url: '/payment_types'
-    templateUrl: 'payment_types'
-  .state 'gs.settings.operators',
-    url: '/operators'
-    templateUrl: 'operators'
-  .state 'gs.settings.taxGroups',
-    url: '/tax_groups'
-    templateUrl: 'tax_groups'
+    templateUrl: 'resources',
+    resolve: {
+      resources: ['ResourceStore', (ResourceStore)->
+        ResourceStore.query().$promise
+      ]
+    }
   .state 'gs.settings.departments',
     url: '/departments'
     templateUrl: 'departments'
@@ -44,11 +79,9 @@ angular.module 'gs.settings', [
     url: '/plus'
     templateUrl: 'plus'
 ]  
-.controller 'Settings', ['$scope', '$state', ($scope, $state)->
-  console.log 'init'
+.controller 'Settings', ['$scope', '$state', '$mdSidenav', ($scope, $state, $mdSidenav)->
   $scope.isSetting = (setting)->
-    console.log setting
-    console.log $state.current
-    console.log $state.includes(setting)
     $state.includes setting
+  $scope.toggleSidenav = ()->
+    $mdSidenav('sidenav').toggle()
 ]

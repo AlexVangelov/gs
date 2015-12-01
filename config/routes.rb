@@ -5,20 +5,22 @@ Rails.application.routes.draw do
     end
   end
   
+  mount Sale::Engine, at: "sale"
+  
   constraints OnlyHxr.new do
     devise_for :accounts
-    resource :settings
-    resource :account
-    resources :origins
-    get '/' => "application#main"
+    resources :businesses
+    resources :settings
   end
   
+  mount_selling_api at: :api, concern: 'GsController', sellable: :current_account
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
-  get '*path' => "application#index"   
+  root 'application#gs'
+  get '*path' => "application#gs"   
   
 
   # Example of regular route:

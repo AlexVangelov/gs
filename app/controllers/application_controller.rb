@@ -2,11 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery with: :exception
+  include GsController
   
-  before_action :authenticate_account!, except: [:index]
+  skip_before_action :authenticate_account!, only: [:gs]
 
-
-  def main
-    render partial: true
-  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125004655) do
+ActiveRecord::Schema.define(version: 20151129234241) do
 
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -303,5 +303,113 @@ ActiveRecord::Schema.define(version: 20151125004655) do
   end
 
   add_index "billing_versions", ["item_type", "item_id"], name: "index_billing_versions_on_item_type_and_item_id"
+
+  create_table "businesses", force: :cascade do |t|
+    t.integer  "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "uuid"
+    t.string   "name"
+  end
+
+  add_index "businesses", ["account_id"], name: "index_businesses_on_account_id"
+
+  create_table "selling_chargeables", force: :cascade do |t|
+    t.integer  "billable_id"
+    t.integer  "holdable_id"
+    t.string   "holdable_type"
+    t.integer  "master_id"
+    t.string   "type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "selling_chargeables", ["billable_id"], name: "index_selling_chargeables_on_billable_id"
+  add_index "selling_chargeables", ["holdable_type", "holdable_id"], name: "index_selling_chargeables_on_holdable_type_and_holdable_id"
+
+  create_table "selling_configs", force: :cascade do |t|
+    t.integer  "master_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "profile_title"
+    t.string   "resource_title"
+    t.string   "resource_type_title"
+    t.string   "occupation_title"
+  end
+
+  create_table "selling_daytime_zones", force: :cascade do |t|
+    t.string   "name"
+    t.time     "from"
+    t.integer  "master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selling_packages", force: :cascade do |t|
+    t.integer  "master_id"
+    t.integer  "resource_type_id"
+    t.integer  "seazon_id"
+    t.integer  "daytime_zone_id"
+    t.integer  "months"
+    t.integer  "days"
+    t.integer  "stay"
+    t.decimal  "qty",              precision: 6, scale: 3
+    t.integer  "plu_id"
+    t.boolean  "recurring"
+    t.string   "type"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "selling_packages", ["daytime_zone_id"], name: "index_selling_packages_on_daytime_zone_id"
+  add_index "selling_packages", ["resource_type_id"], name: "index_selling_packages_on_resource_type_id"
+  add_index "selling_packages", ["seazon_id"], name: "index_selling_packages_on_seazon_id"
+
+  create_table "selling_profiles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "master_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selling_rates", force: :cascade do |t|
+    t.integer  "master_id"
+    t.integer  "resource_type_id"
+    t.integer  "seazon_id"
+    t.integer  "daytime_zone_id"
+    t.integer  "plu_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "selling_rates", ["daytime_zone_id"], name: "index_selling_rates_on_daytime_zone_id"
+  add_index "selling_rates", ["resource_type_id"], name: "index_selling_rates_on_resource_type_id"
+  add_index "selling_rates", ["seazon_id"], name: "index_selling_rates_on_seazon_id"
+
+  create_table "selling_resource_types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selling_resources", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "resource_type_id"
+    t.integer  "master_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "selling_resources", ["resource_type_id"], name: "index_selling_resources_on_resource_type_id"
+
+  create_table "selling_seazons", force: :cascade do |t|
+    t.string   "name"
+    t.date     "from"
+    t.integer  "master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

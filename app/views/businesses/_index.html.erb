@@ -1,0 +1,40 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <h3 class="md-flex">GS &raquo; Business</h3>
+    <span flex></span>
+    <md-button md-no-ink ng-click="logOut('<%= destroy_account_session_path %>')">
+      Logout
+    </md-button>
+  </div>
+</md-toolbar>
+<!-- <md-card class="help-card">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Origins Tutorial</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    What is origin and how it works...
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center center">
+    <md-button class="md-fab md-raised help-close-btn" style="position: relative;bottom: -36px;">Close</md-button>
+  </md-card-actions>
+</md-card> -->
+<div class="inset">
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('businesses/new.html', 'new', businesses)">NEW</md-button>
+  <div layout="row">
+    <md-input-container flex>
+      <label>Filter</label>
+      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+    </md-input-container>
+  </div>
+  <md-list class="gs-list" layout-wrap layout-align-center-center layout-row" layout="row" layout-align="center center">
+    <div ng-repeat="business in businesses" layout="row" class="gs-list-group flex-sm-100 flex-md-100 flex-50" >
+      <md-list-item flex ng-click="settings(business.uuid)">
+        <h2>{{ business.name }}</h2>
+        <md-button ng-click="resourceDialog('businesses/new.html', business.id, businesses)" aria-label="Edit" class="md-secondary md-hue-3">EDIT</md-button>
+      </md-list-item>
+      <md-button flex-25 ng-href="/sale/{{business.uuid}}" target="_self" aria-label="Sale" class="md-raised">SetUp</md-button>
+    </div>
+  </md-list>
+</div>

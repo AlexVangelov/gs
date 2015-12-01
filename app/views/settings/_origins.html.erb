@@ -1,0 +1,33 @@
+<md-card class="help-card">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Origins Tutorial</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    What is origin and how it works...
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center center">
+    <md-button class="md-fab md-raised help-close-btn">
+      <span class="close-label">Close</span>
+      <span class="open-label">?</span>
+    </md-button>
+  </md-card-actions>
+</md-card>
+<div class="inset">
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/origin', 'new', origins)">NEW</md-button>
+  <div layout="row">
+    <md-input-container flex>
+      <label>Origins Search</label>
+      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+    </md-input-container>
+  </div>
+  <md-list class="gs-list" layout-wrap layout-align-center-center layout-row" layout="row" layout-align="center center">
+    <md-list-item class="md-2-line flex-sm-100 flex-md-100 flex-50" ng-repeat="origin in origins" ng-click="resourceDialog('settings/origin', origin.id, origins)">
+      <div class="md-list-item-text">
+        <h3>{{origin.name}}</h3>
+        <p>Payment Model: {{origin.paymentModel }} </p>
+      </div>
+    </md-list-item>
+  </md-list>
+</div>

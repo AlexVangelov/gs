@@ -1,0 +1,30 @@
+
+<md-card class="help-card" ng-class="{open: help}">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Operator Tutorial</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    What is operator and how it works...
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="center center">
+    <md-button ng-click="help = !help" class="md-fab md-raised help-close-btn">
+      <span class="close-label">Close</span>
+      <span class="open-label">?</span>
+    </md-button>
+  </md-card-actions>
+</md-card>
+<div class="inset" layout-align="center center">
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/operator', 'new', operators)">NEW</md-button>
+  <div layout="row">
+    <md-input-container flex>
+      <label>Operators Search</label>
+      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+    </md-input-container>
+  </div>
+  <md-list style="padding-top: 2px;">
+    <md-list-item ng-repeat-start="operator in operators" ng-click="resourceDialog('settings/operator', operator.id, operators)">{{operator.name}}</md-list-item>
+    <md-divider ng-repeat-end></md-divider>
+  </md-list>
+</div>

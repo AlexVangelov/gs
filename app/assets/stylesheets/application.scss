@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require angular-material
+ *= require_tree .
+ *= require_self
+ */
+
+md-toolbar {
+  min-height: 48px;
+  .md-toolbar-tools {
+    height: 48px;
+    min-height: 48px;
+  }
+}
+.add-item-btn {
+  position: fixed;
+  right: 8px;
+}
+
+md-card.help-card {
+  background-color: #fafafa;
+  margin: 15px;
+  margin-top: -182px; //-2px;
+  margin-bottom: 3px;
+  transition: margin-top .5s;
+  .open-label {
+    position: relative;
+    top: 14px;
+  }
+  &.open {
+    margin-top: -2px;
+    .open-label {
+      display: none;
+    }
+  }
+  .help-close-btn {
+    position: relative;
+    bottom: -36px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  }
+  &:not(.open) {
+    .close-label {
+      display: none;
+    }
+  }
+}
+
+md-dialog {
+  max-width: 84%;
+}
+
+md-list.gs-list {
+  md-list-item > button:first-child, .gs-list-group > a.md-button {
+    background-color: #fafafa;
+    border-radius: 2px;
+    margin: 4px;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12);
+  }
+}

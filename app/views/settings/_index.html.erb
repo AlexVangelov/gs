@@ -1,0 +1,88 @@
+<md-toolbar class="md-info">
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">GS &raquo; Settings</h2>
+    <md-button ui-sref="gs.index">
+      Home
+    </md-button>
+    <span flex></span>
+    <md-button md-no-ink ng-click="logOut('<%= destroy_account_session_path %>')">
+      Logout
+    </md-button>
+    <md-button hide-gt-sm ng-click="toggleSidenav()" class="md-primary md-icon-button">N</md-button>
+  </div>
+</md-toolbar>
+<md-content id='settings' layout="row" flex>
+  <md-content flex>
+    <ui-view layout="column" flex>
+    </ui-view>
+    <!-- <md-toolbar class="md-primary md-hue-3" style="position: fixed; bottom: 0; width: auto; left: 0px; right: 236px; background-color: #fafafa; box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.26);">
+      <div class="md-toolbar-tools">
+        <md-button class="md-raised md-primary md-hue-3">Prev</md-button>
+        <span flex="" class="flex"></span>
+        <h3 class="ng-binding">Wizard</h3>
+        <span flex="" class="flex"></span>
+        <md-button class="md-raised md-primary md-hue-3">Next</md-button>
+      </div>
+    </md-toolbar> -->
+  </md-content>
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2 md-hue-1" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-sm')">
+    <div class='inset'>
+      <md-input-container flex>
+        <label>Setting Search</label>
+        <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+      </md-input-container>
+    </div>
+    <md-list ng-click="toggleSidenav()">
+      <md-list-item ui-sref="gs.settings.system" ng-class="{ active: isSetting('gs.settings.system') }">
+        System
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ui-sref="gs.settings.operators" ng-class="{ active: isSetting('gs.settings.operators') }">
+        Operators
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.origins" ng-class="{ active: isSetting('gs.settings.origins') }">
+        Origins
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.paymentTypes" ng-class="{ active: isSetting('gs.settings.paymentTypes') }">
+        Payment Types
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.taxGroups">
+        Tax Groups
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ui-sref="gs.settings.resourceTypes" ng-class="{ active: isSetting('gs.settings.resourceTypes') }">
+        Resource Types
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.resources" ng-class="{ active: isSetting('gs.settings.resources') }">
+        Resources
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ui-sref="gs.settings.departments">
+        Price-Lookup Groups
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.plus">
+        Price-Lookup Items
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ui-sref="gs.settings.resources" ng-class="{ active: isSetting('gs.settings.timePricing') }">
+        Time Pricing
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.resources" ng-class="{ active: isSetting('gs.settings.daytimeZones') }">
+        Daytime Zones
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.resources" ng-class="{ active: isSetting('gs.settings.seasons') }">
+        Seasons
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.resources" ng-class="{ active: isSetting('gs.settings.rates') }">
+        Rates
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item ui-sref="gs.settings.packages">
+        Packages
+      </md-list-item>
+      <md-list-item ui-sref="gs.settings.subscriptionTemplates">
+        Subscriptions
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+</md-content>
