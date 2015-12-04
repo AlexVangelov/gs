@@ -46,7 +46,7 @@ md-card.help-card {
   .help-close-btn {
     position: relative;
     bottom: -36px;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
   }
   &:not(.open) {
     .close-label {
@@ -64,6 +64,26 @@ md-list.gs-list {
     background-color: #fafafa;
     border-radius: 2px;
     margin: 4px;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.26);
+    &.center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &:hover {
+      background-color: rgba(158,158,158,0.2);
+    }
+  }
+  .gs-list-group {
+    .md-button:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: 0;
+    }
+    .md-button:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-right: 0;
+    } 
   }
 }

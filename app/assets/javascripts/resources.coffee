@@ -1,8 +1,11 @@
 angular.module 'gs.settings.resources', [
-  'ngResource'
+  'ngResource',
+  'angular.filter'
 ]
-.factory 'ResourceStore', ['$resource', ($resource)->
-  $resource '/api/resources/:id', 
+.factory 'ResourceStore',['$store', '$rootScope', ($store, $rootScope)->
+  $store '/api/:uuid/resources/:id',
+    uuid: ()->
+      $rootScope.gsUuid
     id: '@_id'
   ,
     update: 

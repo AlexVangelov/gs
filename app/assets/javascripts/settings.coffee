@@ -4,24 +4,25 @@ angular.module 'gs.settings', [
   'gs.settings.origins',
   'gs.settings.operators',
   'gs.settings.resources',
-  'gs.settings.paymentTypes'
+  'gs.settings.paymentTypes',
+  'gs.settings.taxGroups',
+  'gs.settings.resourceTypes'
 ]
 .factory 'SettingsStore', ['$store', '$rootScope', ($store, $rootScope)->
   $store '/api/:uuid/config',
-    uuid: $rootScope.gsUuid
+    uuid: ()->
+      $rootScope.gsUuid
 ]
 .config ['$stateProvider', ($stateProvider)->
   $stateProvider
   .state 'gs.settings',
     abstract: true
     url: '/settings/:uuid'
-    templateUrl: 'settings',
-    controller: 'Settings',
+    templateUrl: 'settings'
+    controller: 'Settings'
     resolve:
-      gsUuid: ['$stateParams', '$rootScope', ($stateParams, $rootScope)->
+      settings: ['$rootScope', '$stateParams', 'SettingsStore', ($rootScope, $stateParams, SettingsStore)->
         $rootScope.gsUuid = $stateParams.uuid
-      ]
-      settings: [ 'SettingsStore', (SettingsStore)->
         SettingsStore.get().$promise
       ]
     params:
@@ -55,23 +56,38 @@ angular.module 'gs.settings', [
       ]
   .state 'gs.settings.taxGroups',
     url: '/tax_groups'
-    templateUrl: 'tax_groups'
+    templateUrl: 'settings/tax_groups'
+    controller: ['$scope', 'taxGroups', ($scope, taxGroups)->
+      $scope.taxGroups = taxGroups
+    ]
+    resolve:
+      taxGroups: ['TaxGroupStore', (TaxGroupStore)->
+        TaxGroupStore.query().$promise
+      ]
   .state 'gs.settings.resourceTypes',
     url: '/resource_types'
-    templateUrl: 'resourceTypes',
+    templateUrl: 'settings/resource_types'
+    controller: ['$scope', 'resourceTypes', ($scope, resourceTypes)->
+      $scope.resourceTypes = resourceTypes
+    ]
     resolve: {
-      resources: ['ResourceTypeStore', (ResourceStore)->
+      resourceTypes: ['ResourceTypeStore', (ResourceTypeStore)->
         ResourceTypeStore.query().$promise
       ]
     }
   .state 'gs.settings.resources',
     url: '/resources'
-    templateUrl: 'resources',
-    resolve: {
+    templateUrl: 'settings/resources'
+    controller: ['$scope', 'resources', 'resourceTypes', ($scope, resources, resourceTypes)->
+      $scope.resources = resources
+    ]
+    resolve:
       resources: ['ResourceStore', (ResourceStore)->
         ResourceStore.query().$promise
       ]
-    }
+      resourceTypes: ['ResourceTypeStore', (ResourceTypeStore)->
+        ResourceTypeStore.query().$promise
+      ]
   .state 'gs.settings.departments',
     url: '/departments'
     templateUrl: 'departments'

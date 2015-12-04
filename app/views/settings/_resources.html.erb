@@ -1,0 +1,41 @@
+<help-card key='settings.origins'></help-card>
+<div class="inset">
+  <md-fab-speed-dial ng-hide="demo.hidden" md-direction="left" md-open="demo.isOpen" class="md-scale add-item-btn">
+    <md-fab-trigger>
+      <md-button aria-label="menu" class="md-fab md-primary">
+        New
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <div ng-repeat="item in ['S', 'M']">
+        <md-button aria-label="{{item.name}}" class="md-fab md-raised md-primary md-hue-3"
+                   ng-click="resourceDialog('settings/resource', 'new', resources)">
+          {{item}}
+        </md-button>
+      </div>
+    </md-fab-actions>
+  </md-fab-speed-dial>
+  <!-- <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/origin', 'new', origins)">NEW</md-button> -->
+  <div layout="row">
+    <div class="flex-50">
+      <h2>Resources</h2>
+    </div>
+    <div class="flex-50" style="text-align: right;">
+      <md-input-container>
+        <label>Filter</label>
+        <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+      </md-input-container>
+    </div>
+  </div>
+  <section ng-repeat="(resourceTypeId, items) in resources | groupBy: 'resource_type_id'">
+    <md-subheader class="">{{resourceTypeId}}</md-subheader>
+    <md-divider></md-divider>
+    <md-list class="gs-list" layout-wrap layout-align-center-center layout-row layout="row" layout-align="center">
+      <md-list-item id="settings_resource_{{resource.id}}" ng-repeat="resource in items" ng-click="resourceDialog('settings/resource', resource.id, resources)">
+        <div class="md-list-item-text">
+          <h3>{{resource.number}}</h3>
+        </div>
+      </md-list-item>
+    </md-list>
+  </section>
+</div>

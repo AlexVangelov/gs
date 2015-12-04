@@ -1,0 +1,35 @@
+<md-dialog aria-label="origin" ng-cloak>
+  <form name='originForm' ng-submit="save()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Resource Type &raquo; {{originalResource.id ? originalResource.name : 'New'}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">&times;</md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="inset" flex>
+        <md-input-container class="md-block md-autofocus">
+          <label>Name</label>
+          <input ng-model="resource.name">
+        </md-input-container>
+        <md-input-container class="md-block flex-25">
+          <label>Symbol</label>
+          <input ng-model="resource.symbol">
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" style="padding-left: 0;">
+      <md-button ng-if='resource.id' class="md-raised md-warn" ng-click="destroy()">
+        Delete
+      </md-button>
+      <span flex><div hide-sm style="width: 250px;">&nbsp;</div></span>
+      <md-button class="md-raised" ng-click="cancel()">
+        Cancel
+      </md-button>
+      <md-button class="md-raised md-primary" type="submit">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

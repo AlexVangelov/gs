@@ -25,11 +25,11 @@
       </div>
     </md-toolbar> -->
   </md-content>
-  <md-sidenav class="md-sidenav-right md-whiteframe-z2 md-hue-1" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-sm')">
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-sm')">
     <div class='inset'>
       <md-input-container flex>
         <label>Setting Search</label>
-        <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+        <input ng-model="bussiness.filter" class="md-block">
       </md-input-container>
     </div>
     <md-list ng-click="toggleSidenav()">
@@ -46,7 +46,7 @@
       <md-list-item ui-sref="gs.settings.paymentTypes" ng-class="{ active: isSetting('gs.settings.paymentTypes') }">
         Payment Types
       </md-list-item>
-      <md-list-item ui-sref="gs.settings.taxGroups">
+      <md-list-item ui-sref="gs.settings.taxGroups" ng-class="{ active: isSetting('gs.settings.taxGroups') }">
         Tax Groups
       </md-list-item>
       <md-divider></md-divider>
@@ -57,10 +57,10 @@
         Resources
       </md-list-item>
       <md-divider></md-divider>
-      <md-list-item ui-sref="gs.settings.departments">
+      <md-list-item ui-sref="gs.settings.departments" ng-class="{ active: isSetting('gs.settings.departments') }">
         Price-Lookup Groups
       </md-list-item>
-      <md-list-item ui-sref="gs.settings.plus">
+      <md-list-item ui-sref="gs.settings.plus" ng-class="{ active: isSetting('gs.settings.plus') }">
         Price-Lookup Items
       </md-list-item>
       <md-divider></md-divider>

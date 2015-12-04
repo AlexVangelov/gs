@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular-material
+//= require a8m/filters
 //= require_tree .

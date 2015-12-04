@@ -3,7 +3,8 @@ angular.module 'gs.settings.paymentTypes', [
 ]
 .factory 'PaymentTypeStore', ['$store', '$rootScope', ($store, $rootScope)->
   $store '/api/:uuid/payment_types/:id',
-    uuid: $rootScope.gsUuid
+    uuid: ()->
+      $rootScope.gsUuid
     id: '@_id'
   ,
     update: 

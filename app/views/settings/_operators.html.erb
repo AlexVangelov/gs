@@ -3,13 +3,18 @@
 <div class="inset" layout-align="center center">
   <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/operator', 'new', operators)">NEW</md-button>
   <div layout="row">
-    <md-input-container flex>
-      <label>Operators Search</label>
-      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
-    </md-input-container>
+    <div class="flex-50">
+      <h2>Operators</h2>
+    </div>
+    <div class="flex-50" style="text-align: right;">
+      <md-input-container>
+        <label>Filter</label>
+        <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+      </md-input-container>
+    </div>
   </div>
   <md-list style="padding-top: 2px;">
-    <md-list-item ng-repeat-start="operator in operators" ng-click="resourceDialog('settings/operator', operator.id, operators)">{{operator.name}}</md-list-item>
+    <md-list-item id="settings_operator_{{operator.id}}" ng-repeat-start="operator in operators" ng-click="resourceDialog('settings/operator', operator.id, operators)">{{operator.name}}</md-list-item>
     <md-divider ng-repeat-end></md-divider>
   </md-list>
 </div>

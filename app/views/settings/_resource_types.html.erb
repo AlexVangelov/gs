@@ -1,9 +1,9 @@
 <help-card key='settings.payment_types'></help-card>
 <div class="inset">
-  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/payment_type', 'new', paymentTypes)">NEW</md-button>
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/resource_type', 'new', resourceTypes)">NEW</md-button>
   <div layout="row">
     <div class="flex-50">
-      <h2>Payment Types</h2>
+      <h2>Resource Types</h2>
     </div>
     <div class="flex-50" style="text-align: right;">
       <md-input-container>
@@ -13,8 +13,8 @@
     </div>
   </div>
   <md-list style="padding-top: 2px;">
-    <md-list-item id="settings_payment_type_{{paymentType.id}}" ng-repeat-start="paymentType in paymentTypes" ng-click="resourceDialog('settings/payment_type', paymentType.id, paymentTypes)">
-      {{paymentType.name}}
+    <md-list-item id="settings_resource_type_{{resourceType.id}}" ng-repeat-start="resourceType in resourceTypes" ng-click="resourceDialog('settings/resource_type', resourceType.id, resourceTypes)">
+      {{resourceType.name}}
     </md-list-item>
     <md-divider ng-repeat-end></md-divider>
   </md-list>

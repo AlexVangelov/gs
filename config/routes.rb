@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :settings
   end
   
-  mount_selling_api at: :api, concern: 'GsController', sellable: :current_account
+  mount_selling_api at: :api, concern: 'GsController', sellable: :sellable
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,7 +3,8 @@ angular.module 'gs.settings.origins', [
 ]
 .factory 'OriginStore', ['$store', '$rootScope', ($store, $rootScope)->
   $store '/api/:uuid/origins/:id',
-    uuid: $rootScope.gsUuid
+    uuid: ()->
+      $rootScope.gsUuid
     id: '@_id'
   ,
     update: 

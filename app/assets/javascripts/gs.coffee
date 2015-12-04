@@ -14,13 +14,19 @@ angular.module 'gs', [
       $state.go 'gs.devise.logIn', {},
         reload: true
   $scope.resourceDialog = (template, id, collection)->
+    console.log template.replace("/","_").concat("_").concat(id)
+    if id is 'new'
+      initiator = '.add-item-btn'
+    else
+      initiator = '#'.concat(template.replace("/","_")).concat("_").concat(id)
     resource = {}
     for item in collection
       if item.id is id
         resource = item
         break
     $mdDialog.show
-      openFrom: if id is 'new' then '.add-item-btn' else undefined
+      openFrom: initiator
+      closeTo: if id is 'new' then undefined else initiator
       controller: ['$scope', '$mdDialog', 'resource', ($scope, $mdDialog, resource)->
         $scope.originalResource = resource
         $scope.resource = angular.copy(resource)

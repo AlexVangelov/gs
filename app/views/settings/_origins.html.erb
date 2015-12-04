@@ -2,13 +2,18 @@
 <div class="inset">
   <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('settings/origin', 'new', origins)">NEW</md-button>
   <div layout="row">
-    <md-input-container flex>
-      <label>Origins Search</label>
-      <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
-    </md-input-container>
+    <div class="flex-50">
+      <h2>Origins</h2>
+    </div>
+    <div class="flex-50" style="text-align: right;">
+      <md-input-container>
+        <label>Filter</label>
+        <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
+      </md-input-container>
+    </div>
   </div>
   <md-list class="gs-list" layout-wrap layout-align-center-center layout-row" layout="row" layout-align="center center">
-    <md-list-item class="md-2-line flex-sm-100 flex-md-100 flex-50" ng-repeat="origin in origins" ng-click="resourceDialog('settings/origin', origin.id, origins)">
+    <md-list-item id="settings_origin_{{origin.id}}" class="md-2-line flex-sm-100 flex-md-100 flex-50" ng-repeat="origin in origins" ng-click="resourceDialog('settings/origin', origin.id, origins)">
       <div class="md-list-item-text">
         <h3>{{origin.name}}</h3>
         <p>Payment Model: {{origin.paymentModel }} </p>

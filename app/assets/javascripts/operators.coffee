@@ -3,7 +3,8 @@ angular.module 'gs.settings.operators', [
 ]
 .factory 'OperatorStore', ['$store', '$rootScope', ($store, $rootScope)->
   $store '/api/:uuid/operators/:id',
-    uuid: $rootScope.gsUuid
+    uuid: ()->
+      $rootScope.gsUuid
     id: '@_id'
   ,
     update: 
