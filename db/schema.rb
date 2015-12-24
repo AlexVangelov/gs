@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129234241) do
+ActiveRecord::Schema.define(version: 20151220022521) do
 
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -335,7 +335,13 @@ ActiveRecord::Schema.define(version: 20151129234241) do
     t.string   "resource_title"
     t.string   "resource_type_title"
     t.string   "occupation_title"
+    t.integer  "default_origin_id"
+    t.integer  "sellable_id"
+    t.string   "sellable_type"
+    t.integer  "default_profile_id"
   end
+
+  add_index "selling_configs", ["sellable_id", "sellable_type"], name: "index_selling_configs_on_sellable_id_and_sellable_type"
 
   create_table "selling_daytime_zones", force: :cascade do |t|
     t.string   "name"

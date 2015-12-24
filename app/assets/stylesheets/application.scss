@@ -60,7 +60,7 @@ md-dialog {
 }
 
 md-list.gs-list {
-  md-list-item > button:first-child, .gs-list-group > a.md-button {
+  md-list-item > .md-button:first-child, .gs-list-group > a.md-button {
     background-color: #fafafa;
     border-radius: 2px;
     margin: 4px;
@@ -75,12 +75,12 @@ md-list.gs-list {
     }
   }
   .gs-list-group {
-    .md-button:last-child {
+    a.md-button:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       margin-left: 0;
     }
-    .md-button:first-child {
+    a.md-button:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       margin-right: 0;

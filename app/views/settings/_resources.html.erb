@@ -30,7 +30,7 @@
   <section ng-repeat="(resourceTypeId, items) in resources | groupBy: 'resource_type_id'">
     <md-subheader class="">{{resourceTypeId}}</md-subheader>
     <md-divider></md-divider>
-    <md-list class="gs-list" layout-wrap layout-align-center-center layout-row layout="row" layout-align="center">
+    <md-list class="gs-list" layout-wrap layout-align-center-center layout-row layout="row">
       <md-list-item id="settings_resource_{{resource.id}}" ng-repeat="resource in items" ng-click="resourceDialog('settings/resource', resource.id, resources)">
         <div class="md-list-item-text">
           <h3>{{resource.number}}</h3>

@@ -21,20 +21,20 @@
   </md-card-actions>
 </md-card> -->
 <div class="inset">
-  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('businesses/new.html', 'new', businesses)">NEW</md-button>
+  <md-button class="md-fab md-primary add-item-btn" ng-click="resourceDialog('businesses/new.html', 'new', businesses, $event)">NEW</md-button>
   <div layout="row">
     <md-input-container flex>
-      <label>Filter</label>
+      <label>Search</label>
       <input ng-model="bussiness.filter" class="md-block" autofocus md-autofocus>
     </md-input-container>
   </div>
   <md-list class="gs-list" layout-wrap layout-align-center-center layout-row" layout="row" layout-align="center center">
-    <div ng-repeat="business in businesses" layout="row" class="gs-list-group flex-sm-100 flex-md-100 flex-50" >
-      <md-list-item flex ng-click="settings(business.uuid)">
+    <div ng-repeat="business in businesses" layout="row" class="gs-list-group md-2-line flex-100 flex-md-50 flex-lg-50" >
+      <md-list-item flex ng-href="/sale/{{business.uuid}}" target="_self">
         <h2>{{ business.name }}</h2>
-        <md-button ng-click="resourceDialog('businesses/new.html', business.id, businesses)" aria-label="Edit" class="md-secondary md-hue-3">EDIT</md-button>
+        <md-button ng-click="resourceDialog('businesses/new.html', business.id, businesses, $event)" aria-label="Edit" class="md-secondary md-hue-3">EDIT</md-button>
       </md-list-item>
-      <md-button flex-25 ng-href="/sale/{{business.uuid}}" target="_self" aria-label="Sale" class="md-raised center">SetUp</md-button>
+      <md-button flex-25 ui-sref="gs.settings.system({ uuid: business.uuid })" aria-label="Sale" class="md-raised center">SetUp</md-button>
     </div>
   </md-list>
 </div>

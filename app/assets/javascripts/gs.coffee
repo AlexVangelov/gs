@@ -14,7 +14,6 @@ angular.module 'gs', [
       $state.go 'gs.devise.logIn', {},
         reload: true
   $scope.resourceDialog = (template, id, collection)->
-    console.log template.replace("/","_").concat("_").concat(id)
     if id is 'new'
       initiator = '.add-item-btn'
     else
